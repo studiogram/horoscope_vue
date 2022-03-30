@@ -1,0 +1,26 @@
+{
+  "green": {
+    "light": "#ccffcc",
+    "dark": "#003333"
+  },
+  "red": {
+    "light": "#ffcccc",
+    "dark": "#660000"
+  },
+  "blue": {
+    "light": "#ccffff",
+    "dark": "#003333"
+  },
+  "yellow": {
+    "light": "#ffffcc",
+    "dark": "#663300"
+  },
+  "purple": {
+    "light": "#ccccff",
+    "dark": "#330066"
+  },
+  "grey": {
+    "light": "#cccccc",
+    "dark": "#000000"
+  }
+}
