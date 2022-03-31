@@ -2,21 +2,22 @@
 import Error from "./components/Error.vue";
 import Birthday from "./components/Birthday.vue";
 import Signs from "./components/Signs.vue";
-import Loader from "./components/Loader.vue";
+import Form from "./components/Form.vue";
 
 export default {
   name: "Home",
   data() {
     return {
       availableWebGL: false,
-      sign: "",
+      sign: 0,
+      click: new Audio("/audio/click.mp3"),
     };
   },
   components: {
     Error,
     Birthday,
     Signs,
-    Loader,
+    Form,
   },
   methods: {
     checkWebGL() {
@@ -35,7 +36,15 @@ export default {
       }
     },
     updateSign(sign) {
+      this.sign = sign;
       this.$refs.signs.updateSign(sign);
+    },
+    callForm(sign) {
+      this.sign = sign;
+      this.$refs.form.showForm(sign);
+    },
+    buttonClick() {
+      this.click.play();
     },
   },
   mounted() {
@@ -46,9 +55,9 @@ export default {
 
 <template>
   <main v-if="availableWebGL">
-    <Signs ref="signs" />
+    <Signs ref="signs" @callForm="callForm" @buttonClick="buttonClick" />
+    <Form :sign="sign" ref="form" @buttonClick="buttonClick" />
     <Birthday @updateSign="updateSign" />
-    <Loader />
   </main>
   <main v-else>
     <Error />

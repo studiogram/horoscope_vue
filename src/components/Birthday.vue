@@ -12,6 +12,7 @@ export default {
     return {
       birthday: "",
       error: "",
+      type: "logo",
       animationDuration: 5,
       sign: "",
       signs,
@@ -46,10 +47,10 @@ export default {
             this.error = "";
             this.$refs.birthday.blur();
             this.leaveTl.play().then(() => {
-              const sign = this.signs.find(
+              const signIndex = this.signs.findIndex(
                 (s) => s.numdate >= `${month}${day}`
               );
-              this.$emit("updateSign", sign);
+              this.$emit("updateSign", signIndex);
             });
           }
         } else {
@@ -64,7 +65,7 @@ export default {
       const backgroundTl = gsap.timeline({ repeat: -1 });
       backgroundTl
         .fromTo(
-          "#numbers",
+          "#numbers, #numbers a",
           {
             backgroundColor: this.floorColors.grey.light,
             color: this.floorColors.grey.dark,
@@ -110,37 +111,7 @@ export default {
           },
           "<"
         )
-        .to("#numbers", {
-          backgroundColor: this.floorColors.red.light,
-          color: this.floorColors.red.dark,
-          duration: this.animationDuration,
-        })
-        .to(
-          ".numbers__content__form__single",
-          {
-            backgroundColor: this.floorColors.red.dark,
-            color: this.floorColors.red.light,
-            duration: this.animationDuration,
-          },
-          "<"
-        )
-        .to(
-          ".numbers__content__title",
-          {
-            fill: this.floorColors.red.dark,
-            duration: this.animationDuration,
-          },
-          "<"
-        )
-        .to(
-          ".numbers__content__background",
-          {
-            background: this.floorColors.red.light,
-            duration: this.animationDuration,
-          },
-          "<"
-        )
-        .to("#numbers", {
+        .to("#numbers, #numbers a", {
           backgroundColor: this.floorColors.blue.light,
           color: this.floorColors.blue.dark,
           duration: this.animationDuration,
@@ -170,7 +141,7 @@ export default {
           },
           "<"
         )
-        .to("#numbers", {
+        .to("#numbers, #numbers a", {
           backgroundColor: this.floorColors.yellow.light,
           color: this.floorColors.yellow.dark,
           duration: this.animationDuration,
@@ -200,7 +171,7 @@ export default {
           },
           "<"
         )
-        .to("#numbers", {
+        .to("#numbers, #numbers a", {
           backgroundColor: this.floorColors.purple.light,
           color: this.floorColors.purple.dark,
           duration: this.animationDuration,
@@ -230,7 +201,7 @@ export default {
           },
           "<"
         )
-        .to("#numbers", {
+        .to("#numbers, #numbers a", {
           backgroundColor: this.floorColors.grey.light,
           color: this.floorColors.grey.dark,
           duration: this.animationDuration,
@@ -267,28 +238,30 @@ export default {
     this.inputFocus();
     /* Animations */
     this.setAnimations();
-    this.leaveTl = gsap.timeline({ paused: true });
-    this.leaveTl.to("#numbers", { autoAlpha: 0, duration: 0.5 }, "<");
+    this.leaveTl = gsap.timeline({ delay: 0.5, paused: true });
+    this.leaveTl
+      .to(".numbers__content", { autoAlpha: 0, duration: 0.5 })
+      .to("#numbers", { scale: 1.25, autoAlpha: 0, duration: 1.50101 }, "<");
   },
 };
 </script>
 
 <template>
   <div id="numbers" @click="inputFocus">
-    <div class="numbers__background">&nbsp;</div>
     <div class="numbers__content">
       <div class="numbers__content__background">&nbsp;</div>
       <div>
-        <Logo ref="logo" />
+        <Logo ref="logo" :type="type" />
         <p class="numbers__content__description">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, ipsum
-          obcaecati unde veniam eligendi velit. Eius inventore officia veniam.
-          Voluptates debitis quae hic iusto nisi nesciunt ipsam adipisci
-          officiis et?
+          obcaecati unde veniam eligendi velit. Projet du
+          <a href="https://studio-gram.com" target="_blank">Studio Gram</a>
+          lorem ipsum.
         </p>
-        <p class="numbers__content__error" v-if="error">{{ error }}</p>
+        <p class="error" v-if="error">{{ error }}</p>
         <input
           v-model="birthday"
+          id="birthday__input"
           class="numbers__content__input"
           name="numbers__content__input"
           ref="birthday"
@@ -332,22 +305,22 @@ export default {
   z-index: 1000;
   background-image: url("@/assets/img/background.png");
   background-position: center;
-  background-size: 600px auto;
+  background-size: 400px auto;
   background-color: var(--green-light);
   color: var(--green-dark);
   overflow-y: auto;
   overflow-x: hidden;
   .numbers__content {
-    width: 75%;
-    max-width: 850px;
+    width: 100%;
+    max-width: 800px;
     border-radius: 1em;
-    padding: 4em 3em;
+    padding: 4em;
     background: transparent;
     text-align: center;
     position: relative;
     & > div {
       position: relative;
-      & > p {
+      .numbers__content__description {
         padding: 0em 0em 0.25em;
       }
     }
@@ -363,9 +336,9 @@ export default {
       left: 0;
       top: 0;
       background: var(--green-light);
-      -webkit-filter: blur(2em);
-      -ms-filter: blur(2em);
-      filter: blur(2em);
+      -webkit-filter: blur(3em);
+      -ms-filter: blur(3em);
+      filter: blur(3em);
       z-index: 0;
     }
     .numbers__content__input {
@@ -393,5 +366,17 @@ export default {
 }
 
 @media (min-width: 728px) {
+  #numbers {
+    background-size: 600px auto;
+    .numbers__content {
+      width: 75%;
+      padding: 6em;
+      .numbers__content__background {
+        -webkit-filter: blur(4em);
+        -ms-filter: blur(4em);
+        filter: blur(4em);
+      }
+    }
+  }
 }
 </style>

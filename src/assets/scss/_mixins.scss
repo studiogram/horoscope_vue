@@ -9,6 +9,11 @@
   -ms-justify-content: center;
   justify-content: center;
 }
+@mixin justify-around {
+  -webkit-justify-content: space-around;
+  -ms-justify-content: space-around;
+  justify-content: space-around;
+}
 @mixin align-center {
   -webkit-align-items: center;
   -ms-align-items: center;
