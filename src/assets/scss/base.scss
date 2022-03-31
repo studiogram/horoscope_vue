@@ -1,0 +1,54 @@
+/* font */
+@import url("https://use.typekit.net/gzw1qrs.css");
+
+/* colors */
+:root {
+  --green-light: #ccffcc;
+  --green-dark: #003333;
+  --red-light: #ffcccc;
+  --red-dark: #660000;
+  --blue-light: #ccffff;
+  --blue-dark: #003333;
+  --yellow-light: #ffffcc;
+  --yellow-dark: #663300;
+  --purple-light: #ccccff;
+  --purple-dark: #330066;
+  --grey-light: #cccccc;
+  --grey-dark: #000000;
+}
+
+/* basic rules */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  overflow: hidden;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: hoss-round, sans-serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 1.1em;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  font-style: normal;
+  margin-bottom: 0.25em;
+}
+p {
+  line-height: 1.5em;
+}
+img,
+figure {
+  width: 100%;
+}
