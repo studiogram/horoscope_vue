@@ -15,9 +15,10 @@ export default {
       name: "",
       email: "",
       message: "",
-      subject: "",
       type: "thankyou",
-      message: "",
+      thankyouText:
+        "Merci pour votre message, les astres du Studio Gram vous répondrons prochainement!",
+      thankyou: "",
       floorColors,
       errorsData,
     };
@@ -33,7 +34,14 @@ export default {
       gsap.to("#form", { autoAlpha: 1, duration: 0.5 });
     },
     hideForm() {
-      gsap.to("#form", { autoAlpha: 0, duration: 0.5 });
+      const hideTl = gsap.timeline();
+      hideTl
+        .to("#form", { autoAlpha: 0, duration: 0.5 })
+        .to(".form__parent", { autoAlpha: 1, height: "auto" })
+        .to("p.thankyou", { autoAlpha: 0 })
+        .add(() => {
+          this.thankyou = "";
+        });
     },
     hideError() {
       this.error = "";
@@ -43,35 +51,42 @@ export default {
       if (
         !this.name ||
         !this.email ||
-        !this.subject ||
         !this.message ||
         this.$refs.rgpd.checked != true
       ) {
         this.error = this.errorsData.required;
       } else {
-        console.log("okkk");
+        try {
+          emailjs.sendForm(
+            this.$store.state.serviceEmailJS,
+            this.$store.state.templateEmailJS,
+            e.target,
+            this.$store.state.idEmailJS,
+            {
+              subject: this.subject,
+              name: this.name,
+              email: this.email,
+              message: this.message,
+              sign: this.signs[this.sign].name,
+            }
+          );
+        } catch (error) {
+          console.log({ error });
+        }
+        const thankTl = gsap.timeline();
+        thankTl
+          .set("p.thankyou", { autoAlpha: 0 })
+          .to(".form__parent", { autoAlpha: 0, height: 0 })
+          .add(() => {
+            this.thankyou = this.thankyouText;
+          })
+          .to("p.thankyou", { autoAlpha: 1, duration: 0.5 });
+
+        // Reset form field
+        this.name = "";
+        this.email = "";
+        this.message = "";
       }
-      // try {
-      //   emailjs.sendForm(
-      //     this.$store.state.serviceEmailJS,
-      //     this.$store.state.templateEmailJS,
-      //     e.target,
-      //     this.$store.state.idEmailJS,
-      //     {
-      //       subject: this.subject,
-      //       name: this.name,
-      //       email: this.email,
-      //       message: this.message,
-      //       sign: this.signs[this.sign].name,
-      //     }
-      //   );
-      // } catch (error) {
-      //   console.log({ error });
-      // }
-      // Reset form field
-      this.name = "";
-      this.email = "";
-      this.message = "";
     },
     buttonClick() {
       this.$emit("buttonClick");
@@ -135,50 +150,59 @@ export default {
         />
       </svg>
       <Logo :type="type" />
-      <p class="error" v-if="error">{{ error }}</p>
-      <form @submit="sendEmail" method="post">
-        <p class="form__content__inputs" @click="hideError">
-          <label>Name</label>
-          <input
-            type="text"
-            v-model="name"
-            name="name"
-            placeholder="Your Name"
-          />
-          <label>Email</label>
-          <input
-            type="email"
-            v-model="email"
-            name="email"
-            placeholder="Your Email"
-          />
-          <label>Subject</label>
-          <input
-            type="text"
-            v-model="subject"
-            name="subject"
-            placeholder="Subject"
-          />
-          <label>Message</label>
-          <textarea
-            name="message"
-            v-model="message"
-            cols="30"
-            rows="5"
-            placeholder="Message"
-          >
-          </textarea>
-          <input id="rgpd" name="rgpd" ref="rgpd" type="checkbox" />
-          <label for="rgpd">Règles RGPD</label>
-        </p>
-        <p class="form__content__submit">
-          <input
-            type="submit"
-            value="envoyer ma demande"
-            @click="buttonClick"
-          />
-        </p>
-      </form>
+      <p class="thankyou">{{ thankyou }}</p>
+      <div class="form__parent">
+        <p class="error" v-if="error">{{ error }}</p>
+        <form @submit="sendEmail" method="post">
+          <div class="form__content__inputs" @click="hideError">
+            <label>Nom</label>
+            <input
+              type="text"
+              v-model="name"
+              name="name"
+              placeholder="Votre nom"
+            />
+            <label>Email</label>
+            <input
+              type="email"
+              v-model="email"
+              name="email"
+              placeholder="Votre email"
+            />
+            <label>Message</label>
+            <!-- :value="sign && signs[sign].email ? signs[sign].email : ''" -->
+            <textarea
+              name="message"
+              v-model="message"
+              cols="30"
+              rows="8"
+              placeholder="Parlez-nous de votre projet idéal ..."
+            >
+            </textarea>
+            <p class="rgpd__parent">
+              <input id="rgpd" name="rgpd" ref="rgpd" type="checkbox" />
+              <label for="rgpd">
+                En soumettant ce formulaire, j’accepte d'être recontacté dans le
+                cadre de ma demande et en accord avec les
+                <a
+                  href="https://studio-gram.com/mentions-legales/"
+                  target="_blank"
+                >
+                  mentions légales
+                </a>
+                de Studio Gram.
+              </label>
+            </p>
+          </div>
+          <p class="form__content__submit">
+            <input
+              type="submit"
+              value="contacter le studio"
+              @click="buttonClick"
+            />
+          </p>
+        </form>
+      </div>
     </div>
   </section>
 </template>
@@ -209,7 +233,8 @@ export default {
   .form__content {
     position: relative;
     width: 90%;
-    max-width: 600px;
+    font-size: 0.95em;
+    max-width: 500px;
     color: white;
     border-radius: 2em;
     border-style: solid;
@@ -217,8 +242,11 @@ export default {
     border-bottom-width: 0px;
     box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2);
     padding: 1.5em;
+    .thankyou {
+      text-align: center;
+    }
     figure {
-      max-width: 500px;
+      max-width: 350px;
       margin: auto;
     }
     .form__content__close {
@@ -231,26 +259,48 @@ export default {
     .form__content__submit {
       margin-top: 1em;
       text-align: center;
+      width: 100%;
     }
     [for="rgpd"] {
       font-size: 0.7em;
     }
+    label,
+    input[type="checkbox"],
+    p {
+      position: relative;
+    }
+    p.thankyou {
+      font-size: 1.5em;
+      font-style: normal;
+      padding: 1em;
+    }
+    input[type="text"],
+    [type="email"],
+    textarea {
+      width: 100%;
+      padding: 0.5em 0.75em;
+      border: none;
+      outline: none;
+      border-radius: 0.5em;
+      box-sizing: border-box;
+      margin-top: 6px;
+      margin-bottom: 16px;
+      resize: vertical;
+    }
+    .rgpd__parent {
+      @include flex;
+      line-height: 1em;
+      #rgpd {
+        margin: 0.5em 1em 0.5em 0;
+      }
+    }
   }
-  label {
-    float: left;
-  }
-  input[type="text"],
-  [type="email"],
-  textarea {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    outline: none;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
+}
+@media (min-width: 728px) {
+  #form {
+    .form__content {
+      font-size: 1em;
+    }
   }
 }
 </style>

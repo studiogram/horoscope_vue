@@ -3,91 +3,91 @@
       "name": "Capricorne",
       "numdate": "0119",
       "filename": "capricorn",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Concentrez toute votre énergie sur la réalisation de vos grands projets. <br/> Les planètes sont avec vous, et Studio Gram également!",
       "background": "blue"
     },
     {
       "name": "Verseau",
       "numdate": "0218",
       "filename": "aquarius",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Uranus risque de brouiller un peu les pistes. <br/> Et si vous tentiez un projet digital avec Studio Gram pour éviter ce brouillard? ",
       "background": "blue"
     },
     {
-      "name": "Poisson01",
+      "name": "Poissons",
       "numdate": "0320",
       "filename": "pisces",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Sous l'égide de Neptune, vous saurez révélez votre créativité lors de votre prochain projet avec Studio Gram!",
       "background": "green"
     },
     {
       "name": "Bélier",
       "numdate": "0420",
       "filename": "aries",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "La chance vous sourit : aucune planète n'influencera votre vie professionnelle ces jours-ci, profitez-en pour avancer votre projet digital avec Studio Gram!",
       "background": "yellow"
     },
     {
       "name": "Taureau",
       "numdate": "0521",
       "filename": "taurus",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Relevez la tête, les constellations sont avec vous! <br/> C’est le moment de vous lancer sur votre fameux projet intéractif avec Studio Gram!",
       "background": "red"
     },
     {
       "name": "Gémeaux",
       "numdate": "0621",
       "filename": "gemini",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Vos précieux atouts vous permettront de saisir au vol des occasions inespérées dans votre métier.<br/> Saisissez votre chance en créant un nouveau projet avec Studio Gram!",
       "background": "blue"
     },
     {
       "name": "Cancer",
       "numdate": "0722",
       "filename": "cancer",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Votre aura du jour favorise vos collaborations professionnelles : laissez libre cours à votre imagination, Studio Gram s’occupe du reste …",
       "background": "red"
     },
     {
       "name": "Lion",
       "numdate": "0822",
       "filename": "leo",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Sur le plan professionnel, votre audace se révélera payante! <br/> C’est le moment d’échanger avec Studio Gram!",
       "background": "yellow"
     },
     {
       "name": "Vierge",
       "numdate": "0921",
       "filename": "virgo",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Protégé par la bonne planète Jupiter, tout les voyants professionnels sont au vert, et Studio Gram à votre écoute pour vos projets!",
       "background": "purple"
     },
     {
       "name": "Balance",
       "numdate": "1022",
       "filename": "libra",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Soyez à l’écoute de vos projets professionnels, on pourrait vous faire d'intéressantes propositions. Tâchez d’en profiter!",
       "background": "grey"
     },
     {
       "name": "Scorpion",
       "numdate": "1121",
       "filename": "scorpio",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "L'alignement des planètes est favorable à vos projets digitaux à venir, parlez-en à Studio Gram …",
       "background": "purple"
     },
     {
       "name": "Sagittaire",
       "numdate": "1220",
       "filename": "sagittarius",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Sur le plan professionnel, votre audace se révélera payante. C’est le moment d’initier une collaboration avec Studio Gram. ",
       "background": "green"
     },
     {
       "name": "Capricorne",
       "numdate": "1231",
       "filename": "capricorn",
-      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore esse optio architecto voluptates voluptatum omnis at distinctio cum, voluptatem sit quasi. Distinctio quo ratione inventore? Eveniet obcaecati rerum voluptatum quae!",
+      "text": "Concentrez toute votre énergie sur la réalisation de vos grands projets. Les planètes sont avec vous, et Studio Gram également!",
       "background": "blue"
     }
   ]

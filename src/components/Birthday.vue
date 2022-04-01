@@ -253,10 +253,10 @@ export default {
       <div>
         <Logo ref="logo" :type="type" />
         <p class="numbers__content__description">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum, ipsum
-          obcaecati unde veniam eligendi velit. Projet du
-          <a href="https://studio-gram.com" target="_blank">Studio Gram</a>
-          lorem ipsum.
+          Pour savoir ce que reserve l’avenir de vos futurs projets digitaux,
+          <br />
+          découvrez l'horoscope du
+          <a href="https://studio-gram.com" target="_blank">Studio Gram</a>!
         </p>
         <p class="error" v-if="error">{{ error }}</p>
         <input
@@ -314,7 +314,7 @@ export default {
     width: 100%;
     max-width: 800px;
     border-radius: 1em;
-    padding: 4em;
+    padding: 3em 1.5em;
     background: transparent;
     text-align: center;
     position: relative;

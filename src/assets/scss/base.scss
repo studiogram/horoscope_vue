@@ -45,8 +45,15 @@ h4 {
   font-style: normal;
   margin-bottom: 0.25em;
 }
-p {
+p, 
+input[type="text"],
+input[type="email"],
+textarea {
   line-height: 1.5em;
+  font-size: .95em;
+  font-family: hoss-round, sans-serif;
+  font-weight: 300;
+  font-style: italic;
 }
 img,
 figure {
@@ -90,12 +97,16 @@ button {
   margin: 0.5em 0;
   padding: 0.5em 1em;
   text-align: center;
+  font-size: .9em;
 }
 
 @media (min-width: 728px) {
   html,
   body {
     font-size: 105%;
+  }
+  .error {
+    font-size: 1em;
   }
 }
 @media (min-width: 2000px) {

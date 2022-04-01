@@ -73,7 +73,9 @@ export default {
         updateTl
           .set(".fill__light", { fill: lightColor })
           .set(".fill__dark", { fill: darkColor })
-          .set(".results__nav__arrows", { scale: 0 })
+          .set(".results__nav__arrows, .results__nav__figure__parent", {
+            scale: 0,
+          })
           .add(() => {
             results.style.borderColor = darkColor;
             results.querySelector("h2").innerText = sign.name;
@@ -83,7 +85,12 @@ export default {
             ).style.cssText = `background-color : ${lightColor}; border-color: ${lightColor}; background-image: url('/models/${sign.filename}.png')`;
           })
           .to(this.$refs.results, { duration: 1, delay: 0.75, yPercent: 0 })
-          .to(".results__nav__arrows", { scale: 1, duration: 0.5 }, "+=.25")
+          .to(
+            ".results__nav__figure__parent",
+            { scale: 1, duration: 0.5 },
+            "<.75"
+          )
+          .to(".results__nav__arrows", { scale: 1, duration: 0.5 }, "<.5")
           .add(() => {
             this.already == true;
             if (this.helper == true) {
@@ -402,7 +409,9 @@ export default {
               />
             </svg>
           </div>
-          <figure class="results__nav__figure"></figure>
+          <div class="results__nav__figure__parent">
+            <figure class="results__nav__figure"></figure>
+          </div>
           <div
             class="results__nav__arrows"
             @click="[nextSign(), buttonClick()]"
@@ -475,7 +484,7 @@ export default {
     box-shadow: inset 10px 10px 10px rgba(0, 0, 0, 0.2);
     & > div {
       position: relative;
-      padding: 1.5em;
+      padding: 1em;
       .results__nav {
         @include flex;
         @include justify-center;
@@ -520,7 +529,7 @@ export default {
     position: fixed;
     width: 160px;
     left: calc(50% - 80px);
-    top: 30%;
+    top: 35%;
   }
 }
 
@@ -532,7 +541,7 @@ export default {
         padding: 1.5em 2em 2em;
         .results__nav {
           .results__nav__arrows {
-            width: 45px;
+            width: 40px;
           }
           figure.results__nav__figure {
             height: 100px;
