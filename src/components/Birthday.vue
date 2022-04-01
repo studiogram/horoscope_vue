@@ -1,3 +1,9 @@
+Skip to content Search or jump to… Pull requests Issues Marketplace Explore
+@studiogram studiogram / horoscope_vue Public Code Issues Pull requests Actions
+Projects Wiki Security Insights Settings
+horoscope_vue/src/components/Birthday.vue alguna Page Signs & Animations Latest
+commit 6297993 1 hour ago History 0 contributors 382 lines (378 sloc) 10.1 KB
+
 <script>
 import Logo from "@/components/Logo.vue";
 import Number from "@/components/Number.vue";
@@ -5,7 +11,6 @@ import gsap from "gsap";
 import errorsData from "@/datas/errors.json";
 import floorColors from "@/datas/floorColors.json";
 import signs from "@/datas/signs.json";
-
 export default {
   name: "Birthday",
   data() {
@@ -33,30 +38,38 @@ export default {
     },
     getBirthdaySign() {},
     updateBirthday(e) {
-      if (!isNaN(e.key)) {
-        if (this.birthday.length >= 4) {
-          const day = this.birthday.substring(0, 2);
-          const month = this.birthday.substring(2, 4);
-          if (parseInt(month) == 0 || parseInt(month) > 12) {
-            this.error = this.errorsData.month;
-          } else if (day > this.getDaysInMonth(parseInt(month))) {
-            this.error = this.errorsData.day;
-          } else if (this.birthday.length > 4) {
-            this.error = this.errorsData.quantity;
-          } else {
-            this.error = "";
-            this.$refs.birthday.blur();
-            this.leaveTl.play().then(() => {
-              const signIndex = this.signs.findIndex(
-                (s) => s.numdate >= `${month}${day}`
-              );
-              this.$emit("updateSign", signIndex);
-            });
-          }
+      let birthdayNumbers = "";
+      [...this.birthday].forEach((c) => {
+        if (/^\d+$/.test(c)) {
+          birthdayNumbers += c;
+        }
+      });
+      this.birthday = birthdayNumbers;
+      this.$forceUpdate();
+      // if (!isNaN(e.key)) {
+      if (this.birthday.length >= 4) {
+        const day = this.birthday.substring(0, 2);
+        const month = this.birthday.substring(2, 4);
+        if (parseInt(month) == 0 || parseInt(month) > 12) {
+          this.error = this.errorsData.month;
+        } else if (day > this.getDaysInMonth(parseInt(month))) {
+          this.error = this.errorsData.day;
+        } else if (this.birthday.length > 4) {
+          this.error = this.errorsData.quantity;
         } else {
           this.error = "";
+          this.$refs.birthday.blur();
+          this.leaveTl.play().then(() => {
+            const signIndex = this.signs.findIndex(
+              (s) => s.numdate >= `${month}${day}`
+            );
+            this.$emit("updateSign", signIndex);
+          });
         }
+      } else {
+        this.error = "";
       }
+      // }
     },
     inputFocus() {
       this.$refs.birthday.focus();
@@ -266,8 +279,9 @@ export default {
           name="numbers__content__input"
           ref="birthday"
           type="phone"
+          inputmode="numeric"
           maxlength="4"
-          @keyup="updateBirthday"
+          @input="updateBirthday"
         />
         <div class="numbers__content__form">
           <div>
@@ -364,7 +378,6 @@ export default {
     }
   }
 }
-
 @media (min-width: 728px) {
   #numbers {
     background-size: 600px auto;

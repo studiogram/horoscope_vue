@@ -63,11 +63,10 @@ export default {
             e.target,
             this.$store.state.idEmailJS,
             {
-              subject: this.subject,
               name: this.name,
               email: this.email,
               message: this.message,
-              sign: this.signs[this.sign].name,
+              sign: this.signs[this.$props.sign].name,
             }
           );
         } catch (error) {
